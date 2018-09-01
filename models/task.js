@@ -9,7 +9,7 @@ const taskSchema = new Schema({
   title: String,
   description: String,
   doneyet: Boolean,
-  owner: {type: Schema.Types.ObjectId, ref: 'User'}
+  project: {type: Schema.Types.ObjectId, ref: 'Project'}
 
 });
 
