@@ -4,7 +4,7 @@ const Project    = require('../models/Project');
 
 
 router.get('/projects', (req, res, next) => {
-    Project.find()
+    Project.find().populate('tasks')
     .then((allTheProjects)=>{
         res.json(allTheProjects);
     })
@@ -30,6 +30,18 @@ router.post('/projects/create', (req, res, next)=>{
         res.json(err);
     })
 })
+
+router.get('/projects/:id', (req, res, next)=>{
+    Project.findById(req.params.id).populate('tasks')
+    .then((response)=>{
+        res.json(response)
+    })
+    .catch((err)=>{
+        res.json(err)
+    })
+})
+
+
 
 router.post('/projects/edit/:id', (req, res, next)=>{
     Project.findByIdAndUpdate(req.params.id, req.body)
