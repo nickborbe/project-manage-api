@@ -71,8 +71,7 @@ app.use(cors({
   origin: ['http://localhost:3000']
 }))
 
-const index = require('./routes/index');
-app.use('/', index);
+
 
 const projectRoutes = require('./routes/projects')
 app.use('/api', projectRoutes);

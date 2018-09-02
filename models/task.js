@@ -8,7 +8,7 @@ const Schema   = mongoose.Schema;
 const taskSchema = new Schema({
   title: String,
   description: String,
-  doneyet: Boolean,
+  doneyet: {type: Boolean, default: false},
   project: {type: Schema.Types.ObjectId, ref: 'Project'}
 
 });

@@ -3,8 +3,8 @@ const router  = express.Router();
 const Task    = require('../models/task');
 
 
-router.get('/tasks', (req, res, next) => {
-    Task.find()
+router.get('/:projectID/tasks', (req, res, next) => {
+    Task.find({project: req.params.projectID})
     .then((allTheTasks)=>{
         res.json(allTheTasks);
     })
@@ -20,8 +20,8 @@ router.post('/tasks/create', (req, res, next)=>{
     Task.create({
         title: req.body.title,
         description: req.body.description,
-        doneyet: req.body.doneyet,
         owner: req.user._id,
+        project: req.body.projectID,
     })
     .then((response)=>{
         res.json(response);
