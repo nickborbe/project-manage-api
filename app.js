@@ -74,6 +74,9 @@ app.use(cors({
 const index = require('./routes/index');
 app.use('/', index);
 
+const projectRoutes = require('./routes/projects')
+app.use('/api', projectRoutes);
+
 const taskRoutes = require('./routes/tasks')
 app.use('/api', taskRoutes);
 
