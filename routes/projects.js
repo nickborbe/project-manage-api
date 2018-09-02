@@ -21,6 +21,7 @@ router.post('/projects/create', (req, res, next)=>{
         title: req.body.title,
         description: req.body.description,
         owner: req.user._id,
+        tasks: [],
     })
     .then((response)=>{
         res.json(response);
