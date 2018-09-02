@@ -20,7 +20,6 @@ router.post('/projects/create', (req, res, next)=>{
     Project.create({
         title: req.body.title,
         description: req.body.description,
-        doneyet: req.body.doneyet,
         owner: req.user._id,
     })
     .then((response)=>{
