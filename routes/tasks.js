@@ -1,6 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 const Task    = require('../models/task');
+const Project = require('../models/project');
 
 
 router.get('/:projectID/tasks', (req, res, next) => {
@@ -14,13 +15,12 @@ router.get('/:projectID/tasks', (req, res, next) => {
 });
 
 router.post('/tasks/create', (req, res, next)=>{
-    if(!req.user){
-       return res.json({message: 'sorry, you must be logged in to create a task'}) 
-    }
+    // if(!req.user){
+    //    return res.json({message: 'sorry, you must be logged in to create a task'}) 
+    // }
     Task.create({
         title: req.body.title,
-        description: req.body.description,
-        owner: req.user._id,
+        description: req.body.description,  
         project: req.body.projectID,
     })
     .then((response)=>{
