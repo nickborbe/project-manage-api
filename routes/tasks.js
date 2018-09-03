@@ -24,7 +24,13 @@ router.post('/tasks/create', (req, res, next)=>{
         project: req.body.projectID,
     })
     .then((response)=>{
-        res.json(response);
+        Project.findByIdAndUpdate(req.body.projectID, {$push:{ tasks: response._id }})
+        .then((theResponse)=>{
+            res.json(response);
+        })
+        .catch((err)=>{
+            res.json(err);
+        })
     })
     .catch((err)=>{
         res.json(err);
