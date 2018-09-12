@@ -4,10 +4,13 @@ const Task    = require('../models/task');
 const Project = require('../models/project');
 
 
-router.get('/:projectID/tasks', (req, res, next) => {
-    Task.find({project: req.params.projectID})
-    .then((allTheTasks)=>{
-        res.json(allTheTasks);
+
+
+
+router.get('/projects/:projectID/tasks/:id', (req, res, next) => {
+    Task.findById(req.params.id)
+    .then((theTask)=>{
+        res.json(theTask);
     })
     .catch((err)=>{
         res.json(err);
